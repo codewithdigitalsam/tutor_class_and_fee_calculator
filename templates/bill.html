@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    <title>Bill</title>
+    <style>
+        @media print{
+            .button_display{
+                display:none;
+            }
+            .col-print-4 {
+                width: 33.333333%;
+            }
+            .col-print-3 {
+                width: 25%;
+            }
+        }
+        .address{
+            border:1px dotted grey
+        }
+    </style>   
+
+</head>
+<body>
+    <div class="container-flex">
+        <!-- This row the details of the Company -->
+        <div class="row justify-content-center">
+            <div id="address" class="col-md-7 text-center border mb-0 ">
+                <h4 class="pt-4">Concept Tutor</h4>
+                <p class="text-center py-0">C-138A, Pandav Nagar, Near Radha Krishna Mandir, Delhi-110092</p>
+                <p class="text-center py-0"><b>Tel-(+91)-9999328378, (+91)-9205017838</b></p>
+            </div>        
+        </div>
+        <!-- This row contains the table containing the details of the table -->
+        <div class="row justify-content-center">            
+            <div class="col-md-7 text-center">
+                <table class="table table-bordered m-0">
+                    <h5 class="pt-4 pb-3">Fee detail for Pakhi and Anvi for the month of {{currentmonth}}</h5>
+                    <tr>
+                        <th>Details</th>
+                        <th>Pakhi</th>
+                        <th>Anvi</th>
+                        <th>Total</th>
+                    </tr>
+                    <tr>
+                        <td><p>Total Class taken in the month of {{previousmonth}} = {{totalclass}}</p></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><p>Amount due for {{currentmonth}} for Science Classes</p></td>
+                        <td>3000</td>
+                        <td>3000</td>
+                        <td>6000</td>
+                    </tr>
+                    <tr>
+                        <td><p>Amount due for {{currentmonth}} for Maths Classes</p></td>
+                        <td>3000</td>
+                        <td>3000</td>
+                        <td>6000</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p> <b>Add -</b>Amount due for extra classes for {{previousmonth}}</p>
+                            <p><b>({{totalclass}} - {{fixedclass}} = {{extraclass}} classes)</b></p>
+                            <p><b>({{extraclass}} x 500 = 750)</b></p>
+                        </td>
+                        <td>{{devidedextraclassfee}}</td>
+                        <td>{{devidedextraclassfee}}</td>
+                        <td>{{extraclassfee}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p> <b>Less -</b>Amount to be refunded for classes not taken for {{previousmonth}}</p>
+                            <p><b>({{fixedclass}} - {{totalclass}} = 1.5 classes)</b></p>
+                            <p><b>({{deficitclass}} x 500 = {{deficitclassfee}})</b></p>
+                        </td>
+                        <td>{{devideddeficitclassfee}}</td>
+                        <td>{{devideddeficitclassfee}}</td>
+                        <td>{{deficitclassfee}}</td>
+                    </tr>
+
+                    <tr>
+                        <td><p><b>Total</b></p></td>
+                        {% if devidedtotalamount1 %}
+                        <td><p><b>{{devidedtotalamount1}}</b></p></td>
+                        {% else %}
+                        <td><p><b>{{devidedtotalamount2}}</b></p></td>
+                        {% endif %}
+                        
+                        {% if devidedtotalamount1 %}
+                        <td><p><b>{{devidedtotalamount1}}</b></p></td>
+                        {% else %}
+                        <td><p><b>{{devidedtotalamount2}}</b></p></td>
+                        {% endif %}
+                        {% if totalamount1 %}
+                        <td><p><b>{{totalamount1}}</b></p></td>
+                        {% else %}
+                        <td><p><b>{{totalamount2}}</b></p></td>
+                        {% endif %}
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- This row contains the word form of the total  -->
+        <div class="row justify-content-center">
+            <div class="col-md-7 border">
+                {% if devidedextratotaltowords %}
+                <p class="mb-0 py-0 mt-2"><b>Pakhi : {{devidedextratotaltowords}}</b></p>
+                {% else %}
+                <p class="mb-0 py-0 mt-2"><b>Pakhi : {{devideddeficittotaltowords}}</b></p>
+                {% endif %}
+
+                {% if devidedextratotaltowords %}
+                <p class="my-0 py-0"><b>Anvi  : {{devidedextratotaltowords}}</b></p>
+                {% else %}
+                <p class="my-0 py-0"><b>Anvi  : {{devideddeficittotaltowords}}</b></p>
+                {% endif %}
+
+                {% if extratotaltowords %}
+                <p class="mt-0 py-0"><b>Total : {{extratotaltowords}}</b></p>
+                {% else %}
+                <p class="mt-0 py-0"><b>Total : {{deficittotaltowords}}</b></p>
+                {% endif %}
+            </div>
+        </div>
+        <!-- This row contains the terms and conditions -->
+        <div class="row justify-content-center">
+            <div class="col-4 border col-print-4">
+                <p><b>Terms and Condition</b></p>
+                <p class="my-0 py-0">Not Any</p>
+                <p class="my-0 py-0">Not Any</p>
+                <p class="my-0 py-0">Not Any</p>
+                <p class="my-0 py-0">Not Any</p>
+                <p class="my-0 py-0">Not Any</p>
+            </div>
+            <div class="col-3 border col-print-3">
+                <p class="mb-4 px-0"><b>Receiver's Signature</b></p>
+                <h5 class="mb-5">Concept Tutor</h5>
+                <h5>Authorised Signatory</h5>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-7 mt-5 text-center">                
+                <a href="" class="btn btn-primary mb-5 button_display" onclick="window.print()">Print Bill</a>
+                <a href="{% url 'table1'%}" class="btn btn-info mb-5 button_display">Table</a>                
+            </div>
+        </div>    
+    </div>    
+</body>
+</html>
+
+

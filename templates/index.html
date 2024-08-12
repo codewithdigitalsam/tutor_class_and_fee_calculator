@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-flex">
+        <!-- This is a row which contains navigation bar -->
+        <div class="row">
+            <div class="col-12 py-2 " style="background-color: rgb(3, 135, 145);">
+                <h5 class="text-light pl-3">Class & Fee Calculator</h5>
+            </div>
+        </div>
+        <!-- This is a row which contains header image -->
+        <div class="row">
+            <div class="col-12 p-0">
+                <img src="{% static 'images/two student.png'%}" alt="" width="100%">
+            </div>
+        </div>
+        <!-- This is a row which contains bill, form, table -->
+        <div class="row">
+            <div class="col-md-12 text-center mt-5 py-4 text-light" style="padding-left: 200px; padding-right: 200px; text-align: center; background-color: rgb(3, 92, 99);">
+                <h3>About Us</h3>
+                <p><b>The "Tutor Class and Fee Calculator" project is a Django-based application designed to streamline the management of tutoring sessions and related billing. It includes a table to record essential details like class date, duration, subject, and mode of instruction, and a user-friendly form for inputting these class details to ensure accurate data entry. Additionally, the project features a detailed bill page that calculates and displays the fees for each student, taking into account the number of classes, extra sessions, and any refunds. This project provides a comprehensive solution for tutors to manage classes and fees efficiently.</b></p>
+
+            </div>
+        </div>
+        <div class="row justify-content-center ">
+            <div class="col-md-4 py-5 mt-5" style="background-color: rgb(235, 205, 75);">
+                <h3 class="pl-3">Table</h3>
+                <p>The "Class Details" table in the Tutor Class and Fee Calculator project records essential information about each tutoring session. It includes the date of the class, the duration in hours, the specific subject or class being taught, and the mode of instruction (e.g., online or in-person). This helps streamline scheduling and tracking.</p>
+                <a href="{% url 'table1'%}" class="btn btn-danger ml-3">Goto Table</a>
+            </div>
+            <div class="col-md-4 py-5 text-light mt-5" style="background-color: rgb(5, 78, 83);">
+                <h3 class="pl-3">Form</h3>
+                <p>The form on this page allows users to input key details for a tutoring session. Users can enter the date of the class, select the mode of instruction (online or in-person), and specify the duration in hours. This structured input ensures accurate and consistent data entry for managing tutoring sessions effectively.Deails are stored securely in database.</p>
+                <a href="{% url 'form1'%}" class="btn btn-danger ml-3">Goto Form</a>
+
+            </div>
+            <div class="col-md-4 py-5 mt-5" style="background-color: rgb(235, 205, 75);">
+                <h3 class="pl-3">Bill</h3>
+                <p>The Bill page in the Tutor Class and Fee Calculator project provides a detailed breakdown of fees for each student. It includes amounts due for different classes, extra charges, and refunds, along with total calculations. The page is designed for clear and comprehensive billing, including terms and an option to print.</p>
+                <a href="{% url 'bill1' %}" class="btn btn-danger ml-3">Goto Bill</a>
+            </div>
+        </div>
+        <!-- This is a footer which contains the details of the organization -->
+        <div class="row">
+            <div class="col-12 py-2 mt-2 text-center" style="background-color: rgb(3, 135, 145);">
+                <h5 class="text-light pl-3">Call - 9999456756</h5>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
