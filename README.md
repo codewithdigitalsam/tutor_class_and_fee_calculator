@@ -14,7 +14,7 @@ The **Tutor Class and Fee Calculator** is a Django-based web application designe
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/your-username/tutor-class-and-fee-calculator.git
+    git clone https://github.com/codewithdigitalsam/tutor-class-and-fee-calculator.git
     cd tutor-class-and-fee-calculator
     ```
 
@@ -68,7 +68,7 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 ## Contact
 For any inquiries or support, please contact us at:
-- **Email**: support@concepttutor.com
+- **Email**: codewithdigitalsam@gmail.com
 - **Phone**: (+91)-9999328378,
 
 ---
